@@ -23,17 +23,19 @@
 		[SerializeField]
 		GameObject _markerPrefab;
 
-		List<GameObject> _spawnedObjects;
+		public List<GameObject> _spawnedObjects;
 
-		void Start()
+		public void SpawnObjects(List<Vector2d> l, List<int> ids, AppManager am)
 		{
-			_locations = new Vector2d[_locationStrings.Length];
+			_locations = l.ToArray();
 			_spawnedObjects = new List<GameObject>();
-			for (int i = 0; i < _locationStrings.Length; i++)
+			for (int i = 0; i < l.Count - 1; i++)
 			{
-				var locationString = _locationStrings[i];
+				var locationString = "" + l[i].x + "," + l[i].y;
 				_locations[i] = Conversions.StringToLatLon(locationString);
 				var instance = Instantiate(_markerPrefab);
+				instance.GetComponent<MarkerInfo>().primaryColor = am.settings.primaryColor;
+                instance.GetComponent<MarkerInfo>().Setup(i == 0 ? true : false, ids[i], am);
 				instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
 				instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
 				_spawnedObjects.Add(instance);
