@@ -2,6 +2,7 @@
 ## Crimson Code 2024 Project
 ### Awkward Axolotls
 
+[Devpost Link](https://devpost.com/software/social-connections)
 
 ### Inspiration
 College Campuses can be an intimidating place for new students. Especially for students who suffer from social anxiety it can be tough to put yourself out there and meet new friends. It can be scary to just walk up to people and start a conversation without knowing anything about each other, but what if there was a way an app could help break the ice?
